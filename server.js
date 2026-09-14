@@ -8,8 +8,8 @@ const multer = require("multer");
 const smartSearchProducts = require("./smart-search");
 
 const app = express();
-const PORT = 3000;
-const BASE_URL = process.env.BASE_URL || `http://127.0.0.1:${PORT}`;
+const PORT = Number(process.env.PORT) || 3000;
+const BASE_URL = process.env.BASE_URL || process.env.RENDER_EXTERNAL_URL || `http://127.0.0.1:${PORT}`;
 
 const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
