@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1788679572870",
+    "name": "Samsung Galaxy A55",
+    "price": 32999,
+    "ram": "8 GB",
+    "storage": "128",
+    "stock": 2,
+    "image": "",
+    "createdAt": "2026-09-06T07:26:12.871Z",
+    "network": "5G"
+  },
+  {
+    "id": "1788696097807",
+    "name": "Test Phone",
+    "price": 9999,
+    "ram": "8 GB",
+    "storage": "128 GB",
+    "stock": 5,
+    "image": "/uploads/1788689322582.jpg",
+    "createdAt": "2026-09-06T12:01:37.807Z"
+  },
+  {
+    "id": "1788696653452",
+    "name": "Vivo y 28",
+    "price": 13499,
+    "ram": "8 GB",
+    "storage": "128 GB",
+    "stock": 2,
+    "image": "/uploads/1788696653374.png",
+    "createdAt": "2026-09-06T12:10:53.452Z",
+    "network": "5G"
+  }
+]

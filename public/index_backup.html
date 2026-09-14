@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DukaanAI Dashboard</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+  color:#111827
+}
+header{
+  background:#111827;
+  color:white;
+  padding:20px
+}
+header h1{margin:0;font-size:25px}
+header p{margin:6px 0 0;color:#cbd5e1}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08)
+}
+
+h2{margin-top:0}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:20px
+}
+
+.stat{
+  background:white;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06)
+}
+
+.stat small{
+  color:#64748b
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:7px
+}
+
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  font-size:15px
+}
+
+button{
+  border:0;
+  padding:12px 18px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer
+}
+
+.add{
+  width:100%;
+  margin-top:14px;
+  background:#2563eb;
+  color:white
+}
+
+.product{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  border:1px solid #e5e7eb;
+  padding:12px;
+  margin-bottom:10px;
+  border-radius:12px
+}
+
+.product img{
+  width:75px;
+  height:75px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#e5e7eb
+}
+
+.info{flex:1}
+.info h3{margin:0 0 5px}
+.info p{margin:4px 0;color:#64748b;font-size:14px}
+
+.price{
+  color:#16a34a!important;
+  font-weight:bold
+}
+
+.delete{
+  background:#fee2e2;
+  color:#dc2626
+}
+
+.empty{
+  text-align:center;
+  color:#64748b;
+  padding:20px
+}
+
+@media(max-width:650px){
+  .stats{grid-template-columns:1fr 1fr}
+  .form{grid-template-columns:1fr}
+  .product{align-items:flex-start}
+  .product img{width:60px;height:60px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🛍️ DukaanAI</h1>
+<p>हर दुकान का अपना AI Sales Assistant</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Welcome, Shopkeeper 👋</h2>
+<p>Manage your products from one place.</p>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<small>Total Products</small>
+<strong id="totalProducts">0</strong>
+</div>
+
+<div class="stat">
+<small>Total Stock</small>
+<strong id="totalStock">0</strong>
+</div>
+
+<div class="stat">
+<small>Customer Leads</small>
+<strong>0</strong>
+</div>
+
+<div class="stat">
+<small>AI Status</small>
+<strong>🟢 Online</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>➕ Add New Product</h2>
+
+<div class="form">
+
+<input id="name" placeholder="Product Name">
+
+<input id="price" type="number" placeholder="Price ₹">
+
+<input id="ram" placeholder="RAM e.g. 8GB">
+
+<input id="storage" placeholder="Storage e.g. 128GB">
+
+<input id="stock" type="number" placeholder="Stock">
+
+<label>Product Image</label>
+
+<input
+  id="imageFile"
+  type="file"
+  accept="image/*"
+>
+
+<div id="imagePreview" style="margin-top:10px;"></div>
+</div>
+
+<button class="add" onclick="addProduct()">
+Add Product
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>📦 My Products</h2>
+
+<div id="products">
+<div class="empty">Loading products...</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📱 Customer QR Code</h2>
+
+<p>
+हर दुकान के लिए unique QR Code यहाँ generate होगा।
+</p>
+
+<div class="card">
+  <h2>📱 Customer QR Code</h2>
+  <p>Customer इस QR को scan करके आपकी दुकान का catalog खोल सकता है।</p>
+
+  <button class="test-btn" onclick="generateQR()">
+    🚀 Generate Unique QR
+  </button>
+
+  <div id="qrResult" style="display:none; text-align:center; margin-top:20px;">
+    <h3 id="qrShopName"></h3>
+
+    <img
+      id="qrImage"
+      src=""
+      alt="Shop QR Code"
+      style="width:220px; max-width:100%; border:10px solid white; border-radius:12px;"
+    >
+
+    <p>
+      <b>Shop ID:</b>
+      <span id="qrShopId"></span>
+
+    if (!data.success) {
+      alert("QR generate nahi hua");
+      return;
+    }
+
+    document.getElementById("qrResult").style.display = "block";
+    document.getElementById("qrShopName").textContent = data.shopName;
+    document.getElementById("qrImage").src = data.qr;
+    document.getElementById("qrShopId").textContent = data.shopId;
+    document.getElementById("qrUrl").textContent = data.url;
+
+  } catch (error) {
+    console.error(error);
+    alert("Server se connection nahi ho raha");
+  }
+}
+<script>
+async function generateQR() {
+  try {
+    const response = await fetch("/api/shop/qr");
+    const data = await response.json();
+
+    if (!data.success) {
+      alert("QR generate nahi hua");
+      return;
+    }
+
+    document.getElementById("qrResult").style.display = "block";
+    document.getElementById("qrShopName").textContent = data.shopName;
+    document.getElementById("qrImage").src = data.qr;
+    document.getElementById("qrShopId").textContent = data.shopId;
+    document.getElementById("qrUrl").textContent = data.url;
+
+  } catch (error) {
+    console.error(error);
+    alert("Server se connection nahi ho raha");
+  }
+}
+const API="/api";
+
+async function loadProducts(){
+
+try{
+
+const response=await fetch(API+"/products");
+const data=await response.json();
+
+renderProducts(data.products || []);
+
+}catch(error){
+
+console.error(error);
+
+document.getElementById("products").innerHTML=
+'<div class="empty">Unable to load products</div>';
+
+}
+
+}
+
+function renderProducts(products){
+
+document.getElementById("totalProducts").textContent=
+products.length;
+
+let stock=0;
+
+products.forEach(p=>{
+stock+=Number(p.stock||0);
+});
+
+document.getElementById("totalStock").textContent=stock;
+
+const box=document.getElementById("products");
+
+if(products.length===0){
+
+box.innerHTML='<div class="empty">No products added yet.</div>';
+return;
+
+}
+
+box.innerHTML="";
+
+products.forEach(product=>{
+
+const div=document.createElement("div");
+div.className="product";
+
+const img=document.createElement("img");
+
+img.src=product.image || "https://via.placeholder.com/75?text=Product";
+
+img.onerror=function(){
+this.src="https://via.placeholder.com/75?text=Product";
+};
+
+const info=document.createElement("div");
+info.className="info";
+
+const name=document.createElement("h3");
+name.textContent=product.name;
+
+const price=document.createElement("p");
+price.className="price";
+price.textContent="₹"+Number(product.price).toLocaleString("en-IN");
+
+const specs=document.createElement("p");
+specs.textContent=
+"RAM: "+(product.ram||"-")+
+" | Storage: "+(product.storage||"-");
+
+const stockText=document.createElement("p");
+stockText.textContent="Stock: "+(product.stock||0);
+
+info.appendChild(name);
+info.appendChild(price);
+info.appendChild(specs);
+info.appendChild(stockText);
+
+const button=document.createElement("button");
+button.className="delete";
+button.textContent="Delete";
+
+button.onclick=function(){
+deleteProduct(product.id);
+};
+
+div.appendChild(img);
+div.appendChild(info);
+div.appendChild(button);
+
+box.appendChild(div);
+
+});
+
+}
+
+async function addProduct(){
+  alert("addProduct function chal raha hai");
+
+  const name = document.getElementById("name").value.trim();
+  const price = document.getElementById("price").value;
+  const ram = document.getElementById("ram").value.trim();
+  const storage = document.getElementById("storage").value.trim();
+  const stock = document.getElementById("stock").value;
+
+  const imageFile = document.getElementById("imageFile").files[0];
+
+  if(!name || price === ""){
+    alert("Product name aur price required hai.");
+    return;
+  }
+
+  try {
+
+    let image = "";
+
+    // Upload image
+    if(imageFile){
+
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      const uploadResponse = await fetch(API + "/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      const uploadData = await uploadResponse.json();
+
+      if(!uploadResponse.ok || !uploadData.success){
+        throw new Error(uploadData.message || "Image upload failed");
+      }
+
+      image = uploadData.image;
+    }
+
+    // Save product
+    const response = await fetch(API + "/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        price: Number(price),
+        ram: ram,
+        storage: storage,
+        stock: Number(stock || 0),
+        image: image
+      })
+    });
+
+    const data = await response.json();
+
+    if(!response.ok || !data.success){
+      throw new Error(data.message || "Product add failed");
+    }
+
+    alert("Product successfully add ho gaya! ✅");
+
+    document.getElementById("name").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("ram").value = "";
+    document.getElementById("storage").value = "";
+    document.getElementById("stock").value = "";
+    document.getElementById("imageFile").value = "";
+    document.getElementById("imagePreview").innerHTML = "";
+
+    if(typeof loadProducts === "function"){
+      loadProducts();
+    }
+
+  } catch(error) {
+
+    console.error(error);
+    alert("Error: " + error.message);
+
+  }
+}
+    

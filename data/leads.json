@@ -1,0 +1,412 @@
+[
+  {
+    "id": "1788704236284",
+    "shopId": "shop_demo_001",
+    "customer": "test-customer",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-06T14:17:16.284Z",
+    "status": "contacted"
+  },
+  {
+    "id": "1788712707097",
+    "shopId": "shop_demo_001",
+    "customer": "919876543210",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-06T16:38:27.097Z",
+    "status": "new"
+  },
+  {
+    "id": "1788713222041",
+    "shopId": "shop_demo_001",
+    "customer": "919876543210",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-06T16:47:02.041Z",
+    "status": "new"
+  },
+  {
+    "id": "1788713552135",
+    "shopId": "shop_demo_001",
+    "customer": "919876543210",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-06T16:52:32.136Z",
+    "status": "new"
+  },
+  {
+    "id": "1788714312241",
+    "shopId": "shop_demo_001",
+    "customer": "919876543210",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-06T17:05:12.242Z",
+    "status": "new"
+  },
+  {
+    "id": "1788810457747",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-07T19:47:37.749Z",
+    "status": "new"
+  },
+  {
+    "id": "1788888041085",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 12999
+      }
+    ],
+    "createdAt": "2026-09-08T17:20:41.086Z",
+    "status": "new"
+  },
+  {
+    "id": "1788963863134",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-09T14:24:23.137Z",
+    "status": "new"
+  },
+  {
+    "id": "1788966030035",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Samsung mobile",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-09T15:00:30.036Z",
+    "status": "new"
+  },
+  {
+    "id": "1788966048067",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo mobile",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-09T15:00:48.067Z",
+    "status": "new"
+  },
+  {
+    "id": "1788966351860",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "8GB RAM wala mobile",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      },
+      {
+        "id": "1788696097807",
+        "name": "Test Phone",
+        "price": 9999
+      },
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-09T15:05:51.860Z",
+    "status": "new"
+  },
+  {
+    "id": "1788966423880",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "128GB storage",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      },
+      {
+        "id": "1788696097807",
+        "name": "Test Phone",
+        "price": 9999
+      },
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-09T15:07:03.883Z",
+    "status": "new"
+  },
+  {
+    "id": "1788966564590",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo 15000 ke andar",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-09T15:09:24.591Z",
+    "status": "new"
+  },
+  {
+    "id": "1789063609952",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5G mobile batao",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-10T18:06:49.952Z",
+    "status": "new"
+  },
+  {
+    "id": "1789146509342",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T17:08:29.343Z",
+    "status": "new"
+  },
+  {
+    "id": "1789146666848",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5G mobile dikhao",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-11T17:11:06.849Z",
+    "status": "new"
+  },
+  {
+    "id": "1789147993042",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T17:33:13.044Z",
+    "status": "new"
+  },
+  {
+    "id": "1789148690984",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T17:44:50.985Z",
+    "status": "new"
+  },
+  {
+    "id": "1789150581618",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T18:16:21.620Z",
+    "status": "new"
+  },
+  {
+    "id": "1789150767925",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5G mobile",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-11T18:19:27.928Z",
+    "status": "new"
+  },
+  {
+    "id": "1789150973405",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5G mobile batao",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-11T18:22:53.406Z",
+    "status": "new"
+  },
+  {
+    "id": "1789152074586",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T18:41:14.590Z",
+    "status": "new"
+  },
+  {
+    "id": "1789152122557",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-11T18:42:02.557Z",
+    "status": "new"
+  },
+  {
+    "id": "1789401770737",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5g mobile",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-14T16:02:50.741Z",
+    "status": "new"
+  },
+  {
+    "id": "1789401849518",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "Vivo y 28",
+    "products": [
+      {
+        "id": "1788696653452",
+        "name": "Vivo y 28",
+        "price": 13499
+      }
+    ],
+    "createdAt": "2026-09-14T16:04:09.519Z",
+    "status": "new"
+  },
+  {
+    "id": "1789403780732",
+    "shopId": "shop_demo_001",
+    "customer": "917317825815",
+    "message": "5G mobile batao",
+    "products": [
+      {
+        "id": "1788679572870",
+        "name": "Samsung Galaxy A55",
+        "price": 32999
+      }
+    ],
+    "createdAt": "2026-09-14T16:36:20.733Z",
+    "status": "new"
+  }
+]

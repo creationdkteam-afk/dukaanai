@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DukaanAI - Shop Catalog</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px 14px 40px;
+    }
+
+    .shop-card {
+      background: white;
+      padding: 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .shop-card h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .shop-card p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 18px;
+      outline: none;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #e5e7eb;
+    }
+
+    .product-info {
+      padding: 13px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .spec {
+      color: #6b7280;
+      font-size: 13px;
+      margin: 4px 0;
+    }
+
+    .stock {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .available {
+      color: #16a34a;
+    }
+
+    .out {
+      color: #dc2626;
+    }
+
+    .loading,
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #6b7280;
+      grid-column: 1 / -1;
+    }
+
+    .shop-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #111827;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 450px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>🛍️ DukaanAI</h1>
+    <p>Shop Catalog</p>
+  </div>
+
+  <div class="container">
+
+    <div class="shop-card">
+      <h2 id="shopName">Loading...</h2>
+      <p>Available products देखें और अपनी पसंद का मोबाइल चुनें।</p>
+    </div>
+
+    <input
+      type="text"
+      id="search"
+      class="search"
+      placeholder="🔍 मोबाइल खोजें..."
+      oninput="filterProducts()"
+    >
+
+    <div id="products" class="products">
+      <div class="loading">
+        Products loading...
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let allProducts = [];
+
+    async function loadShop() {
+      try {
+        const response = await fetch("/api/shop");
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById("shopName").textContent =
+            data.shopName;
+        }
+      } catch (error) {
+        document.getElementById("shopName").textContent =
+          "Mobile Shop";
+      }
+    }
+
+    async function loadProducts() {
+      try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+
+        if (!data.success) {
+          showEmpty();
+          return;
+        }
+
+        allProducts = data.products;
+        displayProducts(allProducts);
+
+      } catch (error) {
+        console.error(error);
+
+        document.getElementById("products").innerHTML =
+          '<div class="empty">Server से connection नहीं हो पाया।</div>';
+      }
+    }
+
+    function displayProducts(products) {
+
+      const container = document.getElementById("products");
+
+      if (!products.length) {
+        showEmpty();
+        return;
+      }
+
+      container.innerHTML = "";
+
+      products.forEach(product => {
+
+        const div = document.createElement("div");
+        div.className = "product";
+
+        const image = product.image
+          ? product.image
+          : "https://via.placeholder.com/500x400?text=Mobile";
+
+        const stockText =
+          Number(product.stock) > 0
+            ? `Stock: ${product.stock}`
+            : "Out of Stock";
+
+        const stockClass =
+          Number(product.stock) > 0
+            ? "available"
+            : "out";
+
+        div.innerHTML = `
+          <img src="${image}" alt="${product.name}">
+
+          <div class="product-info">
+
+            <h3>${product.name}</h3>
+
+            <div class="price">
+              ₹${Number(product.price).toLocaleString("en-IN")}
+            </div>
+
+            <div class="spec">
+              📱 RAM: ${product.ram || "N/A"}
+            </div>
+
+            <div class="spec">
+              💾 Storage: ${product.storage || "N/A"}
+            </div>
+
+            <div class="stock ${stockClass}">
+              ${stockText}
+            </div>
+
+            <button
+              class="shop-btn"
+              onclick="contactShop('${product.name.replace(/'/g, "\\'")}')"
+            >
+              💬 Talk to Shopkeeper
+            </button>
+
+          </div>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    function filterProducts() {
+
+      const query =
+        document.getElementById("search").value.toLowerCase();
+
+      const filtered = allProducts.filter(product =>
+        product.name.toLowerCase().includes(query) ||
+        String(product.ram).toLowerCase().includes(query) ||
+        String(product.storage).toLowerCase().includes(query)
+      );
+
+      displayProducts(filtered);
+    }
+
+    function showEmpty() {
+      document.getElementById("products").innerHTML =
+        '<div class="empty">अभी कोई product उपलब्ध नहीं है।</div>';
+    }
+
+    function contactShop(productName) {
+      const shopWhatsApp = "917317825815";
+      const message = "Namaste, mujhe is product ke baare mein jankari chahiye: " + productName;
+      const url = "https://wa.me/" + shopWhatsApp + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank");
+    }
+
+    loadShop();
+    loadProducts();
+  </script>
+
+</body>
+</html>
